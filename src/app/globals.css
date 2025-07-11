@@ -19,6 +19,34 @@
   }
 }
 
+/* === PDF viewer overlay === */
+.react-pdf__Page {
+  position: relative;
+}
+
+.react-pdf__Page__canvas {
+  display: block; /* garante que não ocupe espaço extra */
+  z-index: 1;
+}
+
+.react-pdf__Page__textContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* largura e altura já definidas inline pelo react-pdf */
+  z-index: 2;
+  color: transparent; /* invisível mas selecionável */
+  user-select: none; /* evita seleção de área vazia */
+}
+
+.react-pdf__Page__textContent span {
+  user-select: text; /* texto ainda selecionável */
+}
+
+.react-pdf__Page__textContent span::selection {
+  background: rgba(255, 241, 0, 0.6);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
